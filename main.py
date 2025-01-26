@@ -2,6 +2,7 @@ from lm import LMSession
 import utils
 from collections import Counter
 
+
 #[17, -3.5, 19, 8, -12.1, 5, 14.8, -1, 20, 9.3, -6, 15.5, 2, -11, 18, 13.7, -10, 4, -7.2]
 #[1,1,1,1,1,1,1,1,1,1,1,1]
 #Quiero que la ordenes de menor a mayor
@@ -16,23 +17,26 @@ for i in range(10):
 
     [17, -3.5, 19, 8, -12.1, 5, 14.8, -1, 20, 9.3, -6, 15.5, 2, -11, 18, 13.7, -10, 4, -7.2]
     
-
-    Quiero que me digas cuál es el mayor
+    Quiero que me digas cuál es el mayor. La respuesta tiene que ser un solo número.
+    
     """
     results = []
 
     for i in range(10):
-        response = slm.execute(prompt, format="plain")   
-        response = utils.extract_numbers(response)
+        response = slm.execute(prompt, format="plain")
+        # Convert the ChatResponse object to plain text
+        plain_text_response = utils.convert_chat_response_to_plain_text(response['message']['content'])
+        response = utils.extract_numbers(plain_text_response)
+        print(response)
         results.append(response)
-        print(i)
+        #print(i)
 
-    """ for i in results:
+    for i in results:
         for j in i:
             print(j, end=" ")
-        print() """
+        print()
 
-    #print(results)
+    print(results)
 
     # Convertir listas en tuplas para que sean hashables
     array_tuplas = [tuple(sub_array) for sub_array in results]
@@ -55,7 +59,7 @@ for i in range(10):
         
     print("Elemento/s más repetido/s: ", elemento_mas_repetido)
 
-    """ super_array = []
+    super_array = []
     super_array.append(elemento_mas_repetido)
     
 for i in super_array:
@@ -64,7 +68,8 @@ for i in super_array:
         print()
         
 # Convertir listas en tuplas para que sean hashables
-array_tuplas = [tuple(sub_array) for sub_array in super_array]
+array_tuplas = [tuple(tuple(sub_element) if isinstance(sub_element, list) else sub_element for sub_element in sub_array) for sub_array in super_array]
+#array_tuplas = [tuple(sub_array) for sub_array in super_array]
 
 # Usar Counter para contar las ocurrencias
 contador = Counter(array_tuplas)
@@ -79,18 +84,19 @@ elemento_mas_repetido = [list(elemento) for elemento, cantidad in contador.items
 for elemento, cantidad in contador.items():
     print(f"Cantidad: {cantidad}, Elemento: {list(elemento)}")
     
-print("Elemento más repetido: ", elemento_mas_repetido) """
+print("Elemento más repetido: ", elemento_mas_repetido)
 
 
 print("\nResultados más repetidos de cada iteración externa:")
 for i, result in enumerate(final_results, 1):
     print(f"Iteración {i}: {result}")
 
-""" # Convertir listas en tuplas para contar ocurrencias entre los resultados externos
-array_tuplas_final = [tuple(sub_array) for sub_array in final_results]
+# Convertir listas en tuplas para contar ocurrencias entre los resultados externos
+#array_tuplas_final = [tuple(sub_array) for sub_array in final_results]
+array_tuplas_final = [tuple(tuple(sub_element) if isinstance(sub_element, list) else sub_element for sub_element in sub_array) for sub_array in final_results]
 
 # Usar Counter para contar ocurrencias finales
-contador_final = Counter(array_tuplas_final) """
+contador_final = Counter(array_tuplas_final)
 
 
 # Aplanar la lista de resultados para el conteo final

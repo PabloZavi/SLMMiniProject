@@ -16,3 +16,10 @@ def extract_numbers(input_string):
     # Convertir los resultados a números (int o float)
     numbers = [float(num) if '.' in num else int(num) for num in matches]
     return numbers
+
+
+def convert_chat_response_to_plain_text(chat_response):
+    plain_text = ""
+    plain_text += f"{chat_response}\n"
+    return plain_text
+

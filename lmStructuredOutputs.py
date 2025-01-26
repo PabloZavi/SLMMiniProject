@@ -1,7 +1,7 @@
 import requests
-import json
 import random
 import ollama
+from utils import extract_numbers
 
 class LMSession:
 
@@ -40,8 +40,6 @@ class LMSession:
             }
         try:
             response = ollama.chat(self.model, messages=self.history)
-            #response = requests.post(self.url, json=data, timeout=240)
-            #response.raise_for_status()
         except requests.Timeout:
             print("La solicitud ha excedido el tiempo límite de espera.")
             response = None
@@ -56,12 +54,19 @@ class LMSession:
             response = None
         
         else:
-            return response
+            if response:
+                # Convertimos el contenido del mensaje a string
+                response_content = response['message']['content']
+                # Extraemos los números del contenido
+                numeros_extraidos = extract_numbers(response_content)
+                return numeros_extraidos
+            else:
+                print("La respuesta está vacía")
+                return None
+
         self.remove_history()
         return None
 
-    
-        
     def print_history(self):
         print(self.history)
     def remove_history(self):
@@ -70,4 +75,3 @@ class LMSession:
         self.history.append({"role": "assistant", "content": response_llm })
     def reset_session(self):
         self.history = []
-
