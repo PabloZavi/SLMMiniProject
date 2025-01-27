@@ -152,9 +152,17 @@ La metodología aplicada fue:
   [5, -12.3, 19, 8, -7.5, 14, 2.6, -1, 20, 9, -3.2, 15, -11, 18.4, -6, 4.5, -10, 12, -4.7, 16]
   Quiero saber cuál es el promedio. La respuesta tiene que ser un solo número. Solo muéstrame el resultado, no los cálculos
 
-| Iteración | Resp Ind Correctas | Loops c/ resp correctas | Res Final Correcto? |
-|-----------|--------------------|-------------------------|---------------------|
-| Todas las respuestas en todas las iteraciones fueron incorrectas |
+<table>
+  <tr>
+    <th>Iteración</th>
+    <th>Resp Ind Correctas</th>
+    <th>Loops c/ resp correctas</th>
+    <th>Res Final Correcto?</th>
+  </tr>
+  <tr>
+    <td colspan="4" align="center">Todas las respuestas en todas las iteraciones fueron incorrectas</td>
+  </tr>
+</table>
 
 
 ### **Conclusiones**
