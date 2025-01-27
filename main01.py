@@ -2,8 +2,7 @@ from lmStructuredOutputs import LMSession
 from collections import Counter
 
 
-
-#! Prompt para ordenar de menor a mayor
+#! Prompt para ordenar de menor a mayor una lista con los mismos números
 """ 
 Tengo la siguiente lista de números:
 [1,1,1,1,1,1,1,1,1,1,1,1]
@@ -13,6 +12,15 @@ Quiero que la ordenes de menor a mayor
 
 # Otra lista de números para pruebas:
 # [17, -3.5, 19, 8, -12.1, 5, 14.8, -1, 20, 9.3, -6, 15.5, 2, -11, 18, 13.7, -10, 4, -7.2]
+
+#! Prompt para ordenar de menor a mayor una lista con diferentes números
+""" 
+Tengo la siguiente lista de números:
+[17, -3.5, 19, 8, -12.1, 5, 14.8, -1, 20, 9.3, -6, 15.5, 2, -11, 18, 13.7, -10, 4, -7.2]
+Quiero que la ordenes de menor a mayor
+"""
+# Respuesta correcta: [-12.1, -11, -10, -7.2, -6, -3.5, -1, 2, 4, 5, 8, 9.3, 13.7, 14.8, 15.5, 17, 18, 19, 20]
+
 
 #! Prompt para encontrar el número más alto
 """
@@ -25,12 +33,14 @@ La respuesta tiene que ser un solo número.
 
 #! Prompt para el promedio
 """
-Tengo la siguiente lista de números:
-[5, -12.3, 19, 8, -7.5, 14, 2.6, -1, 20, 9, -3.2, 15, -11, 18.4, -6, 4.5, -10, 12, -4.7, 16]
-Quiero saber cuál es el promedio. 
-La respuesta tiene que ser un solo número.
+    Tengo la siguiente lista de números:
+    [5, -12.3, 19, 8, -7.5, 14, 2.6, -1, 20, 9, -3.2, 15, -11, 18.4, -6, 4.5, -10, 12, -4.7, 16]
+    Quiero saber cuál es el promedio. 
+    La respuesta tiene que ser un solo número.
+    Solo muestrame el resultado, no los calculos
 """
-# Respuesta correcta: [5.525]
+# Respuesta correcta: [4.39]
+
 
 
 slm = LMSession()
@@ -44,14 +54,13 @@ for i in range(10):
 
     prompt = """
     Tengo la siguiente lista de números:
-
-    [17, -3.5, 19, 8, -12.1, 5, 14.8, -1, 20, 9.3, -6, 15.5, 2, -11, 18, 13.7, -10, 4, -7.2]
-    
-    Quiero que me digas cuál es el mayor. La respuesta tiene que ser un solo número.
-    
+    [5, -12.3, 19, 8, -7.5, 14, 2.6, -1, 20, 9, -3.2, 15, -11, 18.4, -6, 4.5, -10, 12, -4.7, 16]
+    Quiero saber cuál es el promedio. 
+    La respuesta tiene que ser un solo número.
+    Solo muestrame el resultado, no los calculos
     """
     #!Poner cuál sería la respuesta correcta!
-    correctResponse = [20]
+    correctResponse = [4.39]
 
     results = []
 
@@ -164,7 +173,9 @@ for elemento, cantidad in contador_final.items():
 print("\nElemento(s) más repetido(s) entre los más repetidos:",
       elemento_mas_repetido_final)
 if elemento_mas_repetido_final == correctResponse:
-    print("\nEl resultado final es la Respuesta correcta!!\n")
+    print("El resultado final es la Respuesta correcta!!\n")
+else:
+    print("El resultado final NO es la Respuesta correcta\n")
 
 print("Respuestas correctas de forma individual (de un total de 100): ",
       counterCorrectRespIndividual)
