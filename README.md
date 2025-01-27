@@ -38,7 +38,8 @@ Para un uso fiable de los "structured outputs", considera lo siguiente:
 
 ### Modelo Usado
 
-Se trabaja en local con el SML Llama 0.5.7.
+Herramienta de modelos --> Ollama versión 0.5.7.
+Modelo utilizado --> llama3.2
 
 ### Ejercicios Numéricos para Probar el Modelo
 
@@ -95,66 +96,65 @@ La metodología aplicada fue:
 
 #### Mayor Número
 
-| Prompt: Tengo la siguiente lista de números: [17, -3.5, 19, 8, -12.1, 5, 14.8, -1, 20, 9.3, -6, 15.5, 2, -11, 18, 13.7, -10, 4, -7.2] Quiero que me digas cuál es el mayor. La respuesta tiene que ser un solo número. |
-|--------------------------------------|
+**Prompt:** Tengo la siguiente lista de números: [17, -3.5, 19, 8, -12.1, 5, 14.8, -1, 20, 9.3, -6, 15.5, 2, -11, 18, 13.7, -10, 4, -7.2] Quiero que me digas cuál es el mayor. La respuesta tiene que ser un solo número.
+
 | Iteración | Resp Ind Correctas | Loops c/ resp correctas | Res Final Correcto? |
-|-----------|-----------|-----------|-----------|
-| 1 | 81/100 | 10/10 | Sí |
-| 2 | 80/100 | 10/10 | Sí |
-| 3 | 77/100 | 10/10 | Sí |
-| 4 | 77/100 | 10/10 | Sí |
-| 5 | 81/100 | 10/10 | Sí |
-| 6 | 77/100 | 10/10 | Sí |
-| 7 | 81/100 | 10/10 | Sí |
-| 8 | 77/100 | 10/10 | Sí |
-| 9 | 80/100 | 10/10 | Sí |
-| 10 | 69/100 | 10/10 | Sí |
+|-----------|--------------------|-------------------------|---------------------|
+| 1         | 81/100             | 10/10                   | Sí                  |
+| 2         | 80/100             | 10/10                   | Sí                  |
+| 3         | 77/100             | 10/10                   | Sí                  |
+| 4         | 77/100             | 10/10                   | Sí                  |
+| 5         | 81/100             | 10/10                   | Sí                  |
+| 6         | 77/100             | 10/10                   | Sí                  |
+| 7         | 81/100             | 10/10                   | Sí                  |
+| 8         | 77/100             | 10/10                   | Sí                  |
+| 9         | 80/100             | 10/10                   | Sí                  |
+| 10        | 69/100             | 10/10                   | Sí                  |
 
 #### Ordenamiento de Lista de Números Iguales
 
-| Prompt: Tengo la siguiente lista de números: [1,1,1,1,1,1,1,1,1,1,1,1] Quiero que la ordenes de menor a mayor |
-|--------------------------------------|
-| Iteración | Resp Ind Correctas | Loops c/ resp correctas | Res Final Correcto? |
-|-----------|-----------|-----------|-----------|
-| 1 | 19/100 | 5/10 | Sí |
-| 2 | 16/100 | 4/10 | Sí |
-| 3 | 20/100 | 5/10 | Sí |
-| 4 | 19/100 | 5/10 | Sí |
-| 5 | 22/100 | 6/10 | Sí |
-| 6 | 4/100 | 0/10 | No |
-| 7 | 16/100 | 5/10 | Sí |
-| 8 | 14/100 | 5/10 | No |
-| 9 | 26/100 | 7/10 | Sí |
-| 10 | 14/100 | 8/10 | Sí |
+**Prompt:** Tengo la siguiente lista de números: [1,1,1,1,1,1,1,1,1,1,1,1] Quiero que la ordenes de menor a mayor
 
+| Iteración | Resp Ind Correctas | Loops c/ resp correctas | Res Final Correcto? |
+|-----------|--------------------|-------------------------|---------------------|
+| 1         | 19/100             | 5/10                    | Sí                  |
+| 2         | 16/100             | 4/10                    | Sí                  |
+| 3         | 20/100             | 5/10                    | Sí                  |
+| 4         | 19/100             | 5/10                    | Sí                  |
+| 5         | 22/100             | 6/10                    | Sí                  |
+| 6         | 4/100              | 0/10                    | No                  |
+| 7         | 16/100             | 5/10                    | Sí                  |
+| 8         | 14/100             | 5/10                    | No                  |
+| 9         | 26/100             | 7/10                    | Sí                  |
+| 10        | 14/100             | 8/10                    | Sí                  |
 
 #### Ordenamiento de Lista de Números Mixtos
 
-| Prompt: Tengo la siguiente lista de números: [17, -3.5, 19, 8, -12.1, 5, 14.8, -1, 20, 9.3, -6, 15.5, 2, -11, 18, 13.7, -10, 4, -7.2] Quiero que la ordenes de menor a mayor |
-|--------------------------------------|
+**Prompt:** Tengo la siguiente lista de números: [17, -3.5, 19, 8, -12.1, 5, 14.8, -1, 20, 9.3, -6, 15.5, 2, -11, 18, 13.7, -10, 4, -7.2] Quiero que la ordenes de menor a mayor
+
 | Iteración | Resp Ind Correctas | Loops c/ resp correctas | Res Final Correcto? |
-|-----------|-----------|-----------|-----------|
-| 1 | 5/100 | 1/10 | No |
-| 2 | 5/100 | 2/10 | Sí |
-| 3 | 7/100 | 1/10 | Sí |
-| 4 | 2/100 | 0/10 | No |
-| 5 | 6/100 | 2/10 | No |
-| 6 | 8/100 | 4/10 | Sí |
-| 7 | 6/100 | 2/10 | No |
-| 8 | 6/100 | 4/10 | Sí |
-| 9 | 7/100 | 5/10 | Sí |
-| 10 | 4/100 | 1/10 | Sí |
+|-----------|--------------------|-------------------------|---------------------|
+| 1         | 5/100              | 1/10                    | No                  |
+| 2         | 5/100              | 2/10                    | Sí                  |
+| 3         | 7/100              | 1/10                    | Sí                  |
+| 4         | 2/100              | 0/10                    | No                  |
+| 5         | 6/100              | 2/10                    | No                  |
+| 6         | 8/100              | 4/10                    | Sí                  |
+| 7         | 6/100              | 2/10                    | No                  |
+| 8         | 6/100              | 4/10                    | Sí                  |
+| 9         | 7/100              | 5/10                    | Sí                  |
+| 10        | 4/100              | 1/10                    | Sí                  |
 
 #### Cálculo del Promedio
 
-| Prompt:
+**Prompt:**
   Tengo la siguiente lista de números:
   [5, -12.3, 19, 8, -7.5, 14, 2.6, -1, 20, 9, -3.2, 15, -11, 18.4, -6, 4.5, -10, 12, -4.7, 16]
-  Quiero saber cuál es el promedio. 
-  La respuesta tiene que ser un solo número.
-  Solo muestrame el resultado, no los cálculos |
+  Quiero saber cuál es el promedio. La respuesta tiene que ser un solo número. Solo muéstrame el resultado, no los cálculos
+
 |--------------------------------------|
 | Todas las respuestas en todas las iteraciones fueron incorrectas |
+
 
 ### **Conclusiones**
 
